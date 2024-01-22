@@ -2,7 +2,7 @@ package src.model;
 
 
 public class Patient extends Client{
-    private static int id = 0;
+    int id = 0;
     int roomNumber;
     String diagnosis;
     //Doctor[] doctors;
@@ -19,20 +19,21 @@ public class Patient extends Client{
         super(username, password);
         id++;
     }
-    public Patient(String username,String diagnosis, int payment, int roomNumber){
+    public Patient(int id, String username,String diagnosis, int payment, int roomNumber){
         super(username);
+        this.id = id;
         this.diagnosis = diagnosis;
         this.payment = payment;
         this.roomNumber = roomNumber;
 
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
-    public static void setId(int id) {
-        Patient.id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getRoomNumber() {

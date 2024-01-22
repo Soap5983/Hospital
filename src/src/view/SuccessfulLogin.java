@@ -21,6 +21,8 @@ public class SuccessfulLogin extends JFrame {
         lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
         lblNewLabel.setBounds(90, 74, 261, 84);
         frame.getContentPane().add(lblNewLabel);
+
+
         frame.setVisible(true);
 
         AssignmentTable assignmentTable = new AssignmentTable(doctorId);
