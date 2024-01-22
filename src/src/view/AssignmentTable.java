@@ -32,11 +32,14 @@ public class AssignmentTable {
             Statement statement = connection.createStatement();
             ResultSet resultSetIDs = statement.executeQuery("SELECT patientID FROM assignments WHERE doctorID = '" + doctorId + "';");
             while(resultSetIDs.next()){
-                ResultSet resultSetPatientData = statement.executeQuery("SELECT * FROM patients WHERE id = '" + resultSetIDs.getInt(1) + "';");
-                Patient currentPatient = new Patient(resultSetPatientData.getString(2),
-                        resultSetPatientData.getString(4), resultSetPatientData.getInt(5),
-                        resultSetPatientData.getInt(6));
-                patientData.add(currentPatient);
+                    ResultSet resultSetPatientData = statement.executeQuery("SELECT * FROM patients WHERE id = '" + resultSetIDs.getInt(1) + "';");
+                    if(resultSetPatientData.next()) {
+                        Patient currentPatient = new Patient(resultSetPatientData.getString(2),
+                                resultSetPatientData.getString(4), resultSetPatientData.getInt(5),
+                                resultSetPatientData.getInt(6));
+                        patientData.add(currentPatient);
+                        System.out.println(currentPatient.toString());
+                    }
 
             }
         } catch (SQLException e) {
@@ -52,12 +55,22 @@ public class AssignmentTable {
         table = new JTable(patientDataForTable, columnNames);
         table.setBounds(63, 55, 673, 312);
         frame.getContentPane().add(table);
+        frame.setVisible(true);
     }
 
     public String[][] initializeData(ArrayList<Patient> patients){
-        String[][] output = new String[patients.size()][1];
+        String[][] output = new String[patients.size()][4];
         for(int i=0; i<patients.size(); i++){
-            output[i][0] = patients.toString();
+            output[i][0] = patients.get(i).getUsername();
+            output[i][1] = patients.get(i).getDiagnosis();
+            output[i][2] = Integer.toString(patients.get(i).getPayment());
+            output[i][3] = Integer.toString(patients.get(i).getRoomNumber());
+
+        }
+        for(int i=0; i<1; i++){
+            for(int j=0; j<4; j++){
+                System.out.println(output[i][j]);
+            }
         }
         return output;
     }

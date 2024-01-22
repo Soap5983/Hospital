@@ -135,8 +135,13 @@ public class LoginScreen extends JFrame {
             DataSource dataSource = manager.getDataSource();
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT id FROM doctors WHERE nameOfDoctor = '" + username + "';");
-            return resultSet.getInt(1);
+            ResultSet resultSet = statement.executeQuery("SELECT doctors.id FROM doctors WHERE nameOfDoctor = '" + username + "';");
+            if(resultSet.next()){
+                int output = resultSet.getInt(1);
+                System.out.println(output);
+                return output;
+            }
+            return -1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

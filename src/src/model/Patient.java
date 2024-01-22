@@ -27,6 +27,37 @@ public class Patient extends Client{
 
     }
 
+    public static int getId() {
+        return id;
+    }
+
+    public static void setId(int id) {
+        Patient.id = id;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public int getPayment() {
+        return payment;
+    }
+
+    public void setPayment(int payment) {
+        this.payment = payment;
+    }
 
     public String toString() {
         return getUsername() + ',' + diagnosis + ',' + payment + "," + roomNumber;
