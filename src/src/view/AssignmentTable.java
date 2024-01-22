@@ -65,14 +65,7 @@ public class AssignmentTable {
             output[i][1] = patients.get(i).getDiagnosis();
             output[i][2] = Integer.toString(patients.get(i).getPayment());
             output[i][3] = Integer.toString(patients.get(i).getRoomNumber());
-
-        }
-        for(int i=0; i<1; i++){
-            for(int j=0; j<4; j++){
-                System.out.println(output[i][j]);
-            }
         }
         return output;
     }
-
 }
